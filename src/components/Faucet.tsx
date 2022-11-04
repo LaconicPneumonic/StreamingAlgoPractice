@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+
 import "./Faucet.css";
 const LARGE_PRIME = 7919 as const;
 
@@ -13,7 +14,7 @@ export function Faucet({ val }: { val: number }): JSX.Element {
     b: number,
     p: number,
     w: number
-  ): number => ((a * num) % p) % w;
+  ): number => ((a * num + b) % p) % w;
   const randInt = (limit: number) => Math.trunc(Math.random() * limit);
 
   const [randomState] = useState(

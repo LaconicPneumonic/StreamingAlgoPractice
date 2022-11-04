@@ -1,5 +1,6 @@
-import React from "react";
 import { useEffect, useState } from "react";
+
+import "./Stream.css";
 
 export function Stream({
   setVal,
@@ -21,7 +22,7 @@ export function Stream({
   }
 
   useEffect(() => {
-    const it = infiniteValueWithinRange(1000);
+    const it = infiniteValueWithinRange(5000);
     const interval = setInterval(() => {
       const n = it.next();
 
@@ -43,15 +44,17 @@ export function Stream({
   }, [stream]);
 
   return (
-    <div className="container">
-      {memory.map((m, i) => (
-        <div
-          className={i == memory.length - 1 ? "highlight square" : "square"}
-          key={i}
-        >
-          <b>{m}</b>
-        </div>
-      ))}
-    </div>
+    <table className="container">
+      <tr>
+        {memory.map((m, i) => (
+          <td
+            className={i === memory.length - 1 ? "highlight square" : "square"}
+            key={i}
+          >
+            <b>{m}</b>
+          </td>
+        ))}
+      </tr>
+    </table>
   );
 }

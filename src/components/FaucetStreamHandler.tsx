@@ -1,7 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { Faucet } from "./Faucet";
 import { Stream } from "./Stream";
+
+import "./FaucetStreamHandler.css";
 
 export function FaucetStreamHandler(): JSX.Element {
   const [val, setVal] = useState(0);

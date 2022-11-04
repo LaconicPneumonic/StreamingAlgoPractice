@@ -1,0 +1,16 @@
+.square {
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    padding: 1%;
+}
+
+.highlight {
+    border: 3px solid black;
+}
+
+.container {
+    table-layout:fixed;
+    width: 100%;
+}
