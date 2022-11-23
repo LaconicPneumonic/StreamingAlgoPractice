@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 import "./Faucet.css";
-const LARGE_PRIME = 7919 as const;
+const LARGE_PRIME = 5915587277 as const;
 
 export function Faucet({ val }: { val: number }): JSX.Element {
   const [seen, setSeen] = useState(0);
@@ -84,13 +84,15 @@ export function Faucet({ val }: { val: number }): JSX.Element {
       </div>
       <div>
         <table>
-          {sketch.map((row, i) => (
-            <tr key={i}>
-              {row.map((value, j) => (
-                <td key={j}>{value}</td>
-              ))}
-            </tr>
-          ))}
+          <tbody>
+            {sketch.map((row, i) => (
+              <tr key={i}>
+                {row.map((value, j) => (
+                  <td key={j}>{value}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
