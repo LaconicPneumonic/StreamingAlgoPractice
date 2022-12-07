@@ -22,7 +22,7 @@ export function Stream({
   }
 
   useEffect(() => {
-    const it = infiniteValueWithinRange(5000);
+    const it = infiniteValueWithinRange(10000);
     const interval = setInterval(() => {
       const n = it.next();
 

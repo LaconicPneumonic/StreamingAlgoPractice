@@ -6,7 +6,7 @@ const LARGE_PRIME = 5915587277 as const;
 export function Faucet({ val }: { val: number }): JSX.Element {
   const [seen, setSeen] = useState(0);
 
-  const depth = 10;
+  const depth = 5;
   const width = 100;
   const hash = (
     num: number,
@@ -54,15 +54,9 @@ export function Faucet({ val }: { val: number }): JSX.Element {
   useEffect(() => {
     setSeen(seen + 1);
 
-    const newSketch: Array<Array<number>> = [];
     for (let index = 0; index < hashes.length; index++) {
       const hash = hashes[index];
-
-      const oldSketchRow = [...sketch[index]];
-
-      oldSketchRow[hash(val)] += 1;
-
-      newSketch.push(oldSketchRow);
+      sketch[index][hash(val)] += 1;
     }
 
     const newPerfCount = { ...perfectCount };
@@ -70,11 +64,11 @@ export function Faucet({ val }: { val: number }): JSX.Element {
     newPerfCount[val] = (newPerfCount[val] || 0) + 1;
     setPerfectCount(newPerfCount);
 
-    setSketch(newSketch);
+    setSketch(sketch);
   }, [val]);
 
   return (
-    <div>
+    <>
       <div>COUNT MIN SKETCH</div>
       <div>
         <input ref={countRef} type="number" />{" "}
@@ -95,6 +89,6 @@ export function Faucet({ val }: { val: number }): JSX.Element {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
